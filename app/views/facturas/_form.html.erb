@@ -31,7 +31,7 @@
 
       <div class="mb-3">
         <%= form.label :fecha_emision, class: "form-label" %>
-        <%= form.date_select :fecha_emision, { class: "form-control" } %>
+        <%= form.text_field :fecha_emision, class: "form-control datepicker" %>
       </div>
 
       <div class="mb-3">
@@ -61,13 +61,13 @@
 
       <div class="mb-3">
         <%= form.label :fecha_vencimiento, class: "form-label" %>
-        <%= form.date_select :fecha_vencimiento, { class: "form-control" } %>
+        <%= form.text_field :fecha_vencimiento, class: "form-control datepicker" %>
       </div>
 
       <% if factura.persisted? %>
         <div class="mb-3">
           <%= form.label :fecha_pago, class: "form-label" %>
-          <%= form.date_select :fecha_pago, { class: "form-control" } %>
+          <%= form.text_field :fecha_pago, class: "form-control datepicker" %>
         </div>
 
         <div class="mb-3">

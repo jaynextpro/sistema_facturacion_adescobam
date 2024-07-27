@@ -11,8 +11,8 @@ class Periodo < ApplicationRecord
                   numericality: { only_integer: true, greater_than: 0, message: "debe ser un año válido" }
   
   validates :mes, uniqueness: { scope: :año, message: "ya existe para este año" }
-  
-  before_destroy :check_for_child_records
+
+  validates :fecha_asamblea, presence: true
 
   def titulo 
     "#{mes_texto} - #{año}"

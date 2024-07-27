@@ -20,7 +20,7 @@ class CreateInitialDb < ActiveRecord::Migration[7.1]
     create_table :periodos do |t|
       t.integer :mes, null: false
       t.integer :año, null: false
-      t.datetime :fecha_asamblea
+      t.datetime :fecha_asamblea, null: false
 
       t.timestamps
     end 
@@ -28,7 +28,7 @@ class CreateInitialDb < ActiveRecord::Migration[7.1]
     create_table :facturas do |t|
       t.references :medidor, null: false
       t.references :periodo, null: false
-      t.references :cliente
+      t.references :cliente, null: false
       t.string :numero_factura, null: false
       t.date :fecha_emision, null: false
       t.decimal :lectura_anterior_metros_cubicos, null: false, scale: 2, precision: 30

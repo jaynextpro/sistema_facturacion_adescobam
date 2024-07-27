@@ -24,7 +24,7 @@
 
       <div class="mb-3">
         <%= form.label :fecha_asamblea, class: "form-label" %>
-        <%= form.datetime_select :fecha_asamblea, { class: "form-control" } %>
+        <%= form.text_field :fecha_asamblea, class: "form-control datepicker_with_time", value: periodo.try(:fecha_asamblea).try(:strftime, '%d-%m-%Y %H:%M') %>
       </div>
 
       <div class="text-center">
