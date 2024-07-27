@@ -1,0 +1,32 @@
+<% pool_size = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i %>
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= pool_size %>
+<% if db_username = ENV["DB_USERNAME"] %>
+  username: <%= db_username %>
+<% end %>
+<% if db_password = ENV["DB_PASSWORD"] %>
+  password: <%= db_password %>
+<% end %>
+<% if db_host = ENV["DB_HOST"] %>
+  host: <%= db_host %>
+<% end %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("DB_NAME_DEV", "sistema_facturacion_development") %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("DB_NAME_TEST", "sistema_facturacion_test") %>
+
+production:
+<% if db_url = ENV["DATABASE_URL"] %>
+  url: <%= db_url %>
+  pool: <%= pool_size %>
+<% else %>
+  <<: *default
+  database: <%= ENV.fetch("DB_NAME_PROD", "sistema_facturacion") %>
+<% end %>

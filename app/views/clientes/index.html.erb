@@ -1,0 +1,32 @@
+<h1 class="text-3xl mb-4">Clientes</h1>
+
+<%= link_to 'Agregar Cliente', new_cliente_path, class: "btn btn-success mb-4" %>
+
+<br/><br/>
+
+<% if @clientes.any? %>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">DUI</th>
+        <th scope="col">Nombre Completo</th>
+        <th scope="col" colspan="2">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @clientes.each do |cliente| %>
+        <tr>
+          <td><%= cliente.dui %></td>
+          <td><%= cliente.nombre_completo %></td>
+          <td><%= link_to 'Editar', edit_cliente_path(cliente), class: "btn btn-sm btn-primary me-2" %></td>
+          <td><%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-sm btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @clientes, renderer: BootstrapPaginateRenderer %>
+
+  <%= link_to 'Descargar copia de seguridad', clientes_path(format: :csv), class: "btn btn-outline-primary mb-4" %>
+<% end %>

@@ -1,0 +1,32 @@
+<%= form_with(model: cliente, local: true) do |form| %>
+  <div class="card shadow-sm mx-auto" style="max-width: 400px;">
+  <% if cliente.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <ul>
+        <% cliente.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="card-body">
+      <h1 class="card-title text-center mb-4">Nuevo Cliente</h1>
+
+      <div class="mb-3">
+        <%= form.label :dui, class: "form-label" %>
+        <%= form.text_field :dui, class: "form-control", placeholder: "Ingrese DUI" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :nombre_completo, class: "form-label" %>
+        <%= form.text_field :nombre_completo, class: "form-control", placeholder: "Ingrese nombre completo" %>
+      </div>
+
+      <div class="text-center">
+        <%= form.submit "Guardar", class: "btn btn-primary w-50 mb-4" %>
+      </div>
+      
+      <%= link_to 'Volver', clientes_path, class: "btn btn-outline-primary mb-4" %>
+    </div>
+  </div>
+<% end %>

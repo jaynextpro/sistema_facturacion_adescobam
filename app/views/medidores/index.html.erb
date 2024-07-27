@@ -1,0 +1,37 @@
+<h1 class="text-3xl mb-4">Medidores</h1>
+
+<%= link_to 'Agregar Medidor', new_medidor_path, class: "btn btn-primary" %>
+
+<br/><br/>
+
+<% if @medidores.any? %>
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Cliente</th>
+        <th scope="col">Número de Medidor</th>
+        <th scope="col">Sector</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Dirección</th>
+        <th scope="col" colspan="2">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @medidores.each do |medidor| %>
+        <tr>
+          <td><%= medidor.cliente.nombre_completo if medidor.cliente %></td>
+          <td><%= medidor.medidor %></td>
+          <td><%= medidor.sector %></td>
+          <td><%= medidor.activo ? 'ACTIVO' : 'INACTIVO' %></td>
+          <td><%= medidor.direccion %></td>
+          <td><%= link_to 'Editar', edit_medidor_path(medidor), class: "btn btn-sm btn-primary me-2" %></td>
+          <td><%= link_to 'Eliminar', medidor, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-sm btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @medidores, renderer: BootstrapPaginateRenderer %>
+
+  <%= link_to 'Descargar copia de seguridad', medidores_path(format: :csv), class: "btn btn-outline-primary mb-4" %>
+<% end %>

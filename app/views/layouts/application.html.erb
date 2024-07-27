@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+    <meta name="robots" content="noindex, nofollow">    
+    <!-- HTML Meta Tags -->
+    <title></title>
+    <meta name="description" content="">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="">
+      <% if flash[:alert].present? %>
+        <div id="error_explanation" class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+      <% if flash[:notice].present? %>
+        <div id="notice_explanation" class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
+      <%= yield %>
+      <div class="text-center">
+        <%= link_to 'Inicio', :root, class: "btn btn-outline-primary mt-4" %>
+      </div>
+    </div>
+  </body>
+</html>

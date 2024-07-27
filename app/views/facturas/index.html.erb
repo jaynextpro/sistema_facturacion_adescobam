@@ -1,0 +1,80 @@
+<h1 class="text-3xl mb-4">Facturas</h1>
+
+<%= link_to 'Agregar Factura', new_factura_path, class: "btn btn-success" %>
+
+<br/><br/>
+
+<%= link_to 'Incluir facturas eliminadas', facturas_path(unscoped: "true"), class: "btn btn-outline-secondary mb-4" if params[:unscoped].blank? %>
+<%= link_to 'Excluir facturas eliminadas', facturas_path(unscoped: "false"), class: "btn btn-outline-secondary mb-4" if (params[:unscoped].present? && params[:unscoped] == "true") %>
+
+<% if @facturas.any? %>
+  <%= form_with url: print_facturas_path(unscoped: params[:unscoped]), method: :post do %>
+    <table class="table table-bordered table-hover table-sm">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Seleccionar</th>
+          <th scope="col">Número de Factura</th>
+          <th scope="col">Medidor</th>
+          <th scope="col">Periodo</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Fecha de Emisión</th>
+          <th scope="col">Lectura Anterior (m³)</th>
+          <th scope="col">Lectura Actual (m³)</th>
+          <th scope="col">Consumo (m³)</th>
+          <th scope="col">Valor por $-m³</th>
+          <th scope="col">Cargo Total</th>
+          <th scope="col">Cargo Total Facturas Pendientes</th>
+          <th scope="col">Cuota Social Pendiente</th>
+          <th scope="col">Fecha de Vencimiento</th>
+          <th scope="col">Recargo Después de Vencimiento</th>
+          <th scope="col">Cargo Total Después de Vencimiento</th>
+          <th scope="col">Fecha de Pago</th>
+          <th scope="col">Monto Total Pagado</th>
+          <th scope="col">Observaciones</th>
+          <th scope="col" colspan="2">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @facturas.each do |factura| %>
+          <tr>
+            <td><%= check_box_tag "facturas_ids[]", factura.id %></td>
+            <td><%= factura.numero_factura %></td>
+            <td><%= factura.medidor.titulo if factura.medidor %></td>
+            <td><%= factura.periodo.titulo if factura.periodo %></td>
+            <td><%= factura.cliente.titulo if factura.cliente %></td>
+            <td><%= factura.fecha_emision_with_format %></td>
+            <td><%= factura.lectura_anterior_metros_cubicos %></td>
+            <td><%= factura.lectura_actual_metros_cubicos %></td>
+            <td><%= factura.consumo_metros_cubicos %></td>
+            <td><%= factura.valor_por_metro_cubico %></td>
+            <td><%= factura.cargo_total %></td>
+            <td><%= factura.cargo_total_facturas_pendientes %></td>
+            <td><%= factura.cuota_social_pendiente %></td>
+            <td><%= factura.fecha_vencimiento_with_format %></td>
+            <td><%= factura.recargo_despues_vencimiento %></td>
+            <td><%= factura.cargo_total_despues_vencimiento %></td>
+            <td><%= factura.fecha_pago_with_format %></td>
+            <td><%= factura.monto_total_pagado %></td>
+            <td><%= factura.observaciones %></td>
+            <% if factura.eliminada != true  %>
+              <td><%= link_to 'Editar', edit_factura_path(factura, unscoped: params[:unscoped]), class: "btn btn-sm btn-primary me-2" %></td>
+            <% end %>
+            <td>
+              <% if factura.eliminada == false %>
+                <%= link_to 'Eliminar', factura_path(factura, unscoped: params[:unscoped]), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-sm btn-danger" %></td>
+              <% else %>
+                <%= link_to 'Restaurar', restaurar_factura_path(factura, unscoped: params[:unscoped]), method: :post, class: "btn btn-sm btn-success" %></td>
+              <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= will_paginate @facturas, renderer: BootstrapPaginateRenderer %>
+
+    <%= submit_tag 'Imprimir Facturas Seleccionadas', class: "btn btn-outline-primary mb-4", data: { disable_with: false } %>
+
+    <%= link_to 'Descargar copia de seguridad', facturas_path(format: :csv, unscoped: "true"), class: "btn btn-outline-primary mb-4" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,37 @@
+<%= form_with(model: periodo, local: true) do |form| %>
+  <div class="card shadow-sm mx-auto" style="max-width: 400px;">
+    <% if periodo.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <ul>
+          <% periodo.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="card-body">
+      <h1 class="card-title text-center mb-4"><%= periodo.persisted? ? 'Editar Periodo' : 'Nuevo Periodo' %></h1>
+
+      <div class="mb-3">
+        <%= form.label :mes, class: "form-label" %>
+        <%= form.select :mes, I18n.t('date.month_names').compact.map.with_index(1) { |month, index| [month.capitalize, index] }, { include_blank: true }, { class: "form-select" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :año, class: "form-label" %>
+        <%= form.select :año, (Date.current.year - 5..Date.current.year + 5).to_a, { include_blank: true }, { class: "form-select" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :fecha_asamblea, class: "form-label" %>
+        <%= form.datetime_select :fecha_asamblea, { class: "form-control" } %>
+      </div>
+
+      <div class="text-center">
+        <%= form.submit "Guardar", class: "btn btn-primary w-50 mb-4" %>
+      </div>
+
+      <%= link_to 'Volver', periodos_path, class: "btn btn-outline-primary mb-4" %>
+    </div>
+  </div>
+<% end %>

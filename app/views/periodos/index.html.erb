@@ -1,0 +1,33 @@
+<h1 class="text-3xl mb-4">Periodos</h1>
+
+<%= link_to 'Agregar periodo', new_periodo_path, class: "btn btn-primary" %>
+
+<br/><br/>
+
+<% if @periodos.any? %>
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Mes</th>
+        <th scope="col">Año</th>
+        <th scope="col">Fecha de Asamblea</th>
+        <th scope="col" colspan="2">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @periodos.each do |periodo| %>
+        <tr>
+          <td><%= periodo.mes_texto.capitalize %></td>
+          <td><%= periodo.año %></td>
+          <td><%= periodo.fecha_asamblea_with_format %></td>
+          <td><%= link_to 'Editar', edit_periodo_path(periodo), class: "btn btn-sm btn-primary me-2" %></td>
+          <td><%= link_to 'Eliminar', periodo, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-sm btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @periodos, renderer: BootstrapPaginateRenderer %>
+
+  <%= link_to 'Descargar copia de seguridad', periodos_path(format: :csv), class: "btn btn-outline-primary mb-4" %>
+<% end %>

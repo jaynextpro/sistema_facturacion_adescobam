@@ -1,0 +1,91 @@
+<%= form_with(model: factura, local: true) do |form| %>
+  <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+    <% if factura.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <ul>
+            <% factura.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <div class="card-body">
+      <h1 class="card-title text-center mb-4"><%= factura.persisted? ? 'Editar Factura' : 'Nueva Factura' %></h1>
+
+      <% if factura.persisted? %>
+        <div class="mb-3">
+          <%= form.label :numero_factura, class: "form-label" %>
+          <%= form.text_field :numero_factura, { step: :any, class: "form-control", disabled: true } %>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :medidor_id, class: "form-label" %>
+        <%= form.collection_select :medidor_id, Medidor.all, :id, :titulo, { include_blank: true }, { class: "form-select" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :periodo_id, class: "form-label" %>
+        <%= form.collection_select :periodo_id, Periodo.all, :id, :titulo, { include_blank: true }, { class: "form-select" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :fecha_emision, class: "form-label" %>
+        <%= form.date_select :fecha_emision, { class: "form-control" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :lectura_anterior_metros_cubicos, class: "form-label" %>
+        <%= form.number_field :lectura_anterior_metros_cubicos, { step: :any, class: "form-control" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :lectura_actual_metros_cubicos, class: "form-label" %>
+        <%= form.number_field :lectura_actual_metros_cubicos, { step: :any, class: "form-control" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :valor_por_metro_cubico, class: "form-label" %>
+        <%= form.collection_select :valor_por_metro_cubico, [[1.00, 1.00], [1.15, 1.15]], :first, :last, { include_blank: true }, { class: "form-select" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :cargo_total_facturas_pendientes, class: "form-label" %>
+        <%= form.number_field :cargo_total_facturas_pendientes, { step: :any, class: "form-control" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :cuota_social_pendiente, class: "form-label" %>
+        <%= form.number_field :cuota_social_pendiente, { step: :any, class: "form-control" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :fecha_vencimiento, class: "form-label" %>
+        <%= form.date_select :fecha_vencimiento, { class: "form-control" } %>
+      </div>
+
+      <% if factura.persisted? %>
+        <div class="mb-3">
+          <%= form.label :fecha_pago, class: "form-label" %>
+          <%= form.date_select :fecha_pago, { class: "form-control" } %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :monto_total_pagado, class: "form-label" %>
+          <%= form.number_field :monto_total_pagado, { step: :any, class: "form-control" } %>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :observaciones, class: "form-label" %>
+        <%= form.text_area :observaciones, { class: "form-control" } %>
+      </div>
+
+      <div class="text-center">
+        <%= form.submit "Guardar", class: "btn btn-primary w-50 mb-4" %>
+      </div>
+
+      <%= link_to 'Volver', facturas_path, class: "btn btn-outline-primary mb-4" %>
+    </div>
+  </div>
+<% end %>
