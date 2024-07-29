@@ -60,3 +60,6 @@ end
 gem 'wicked_pdf'
 gem 'will_paginate'
 gem 'wkhtmltopdf-binary'
+
+gem 'faker'
+gem 'date'

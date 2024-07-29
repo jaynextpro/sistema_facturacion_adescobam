@@ -8,7 +8,7 @@ class Factura < ApplicationRecord
 
   validates :medidor, presence: true
   validates :periodo, presence: true
-  validates :numero_factura, presence: true, uniqueness: true
+  # validates :numero_factura, presence: true, uniqueness: true
   validates :fecha_emision, presence: true
   validates :lectura_anterior_metros_cubicos, presence: true
   validates :lectura_actual_metros_cubicos, presence: true
