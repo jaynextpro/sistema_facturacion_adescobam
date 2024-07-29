@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     if ENV.fetch("ENABLE_BASIC_AUTH", "false") == "true"
       http_basic_authenticate_or_request_with(
         name: ENV.fetch("BASIC_AUTH_USERNAME", "admin"),
-        password: ENV.fetch("BASIC_AUTH_PASSWORD", "laysglobalflavors")
+        password: ENV.fetch("BASIC_AUTH_PASSWORD", "sistemafacturacionadescobam")
       )
     end
   end
