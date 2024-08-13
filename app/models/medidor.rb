@@ -10,6 +10,17 @@ class Medidor < ApplicationRecord
   validates :sector, presence: true
   validates :activo, inclusion: { in: [true, false], message: "debe ser verdadero o falso" }
 
+  scope :by_keyword, ->(keyword) {
+    return all if keyword.blank?
+
+    keyword = keyword&.strip
+    joins(:cliente).where('clientes.nombre_completo ILIKE :keyword OR medidor ILIKE :keyword OR direccion ILIKE :keyword', keyword: "%#{keyword}%")
+  }
+
+  scope :by_sector, ->(sector) { where(sector: sector) if sector.present? }
+  scope :by_activo, ->(activo) { where(activo: activo) if activo.present? }
+
+
   def titulo 
     "#{medidor} - #{activo_string}"
   end

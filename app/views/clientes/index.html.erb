@@ -4,6 +4,15 @@
 
 <br/><br/>
 
+<%= form_with url: clientes_path, method: :get, local: true, class: "mb-4" do |form| %>
+  <div class="input-group">
+    <%= form.text_field :keyword, class: "form-control", placeholder: "Buscar por DUI o Nombre Completo", value: params[:keyword] %>
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+  </div>
+<% end %>
+
+<br/><br/>
+
 <% if @clientes.any? %>
   <table class="table table-bordered table-hover">
     <thead class="table-dark">

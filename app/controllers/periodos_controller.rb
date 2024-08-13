@@ -1,7 +1,11 @@
 class PeriodosController < ApplicationController
     # Acción para listar todas los periodos
     def index
-      @periodos = Periodo.all.paginate(page: params[:page], per_page: 10)
+      @periodos = Periodo.all
+      @periodos = @periodos.by_mes(params[:mes])
+      @periodos = @periodos.by_año(params[:año])
+      @periodos = @periodos.paginate(page: params[:page], per_page: 10)
+
 
       respond_to do |format|
         format.html

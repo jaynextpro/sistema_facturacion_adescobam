@@ -4,6 +4,28 @@
 
 <br/><br/>
 
+<%= form_with url: periodos_path, method: :get, local: true, class: "mb-4" do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :mes, 'Mes', class: "form-label" %>
+      <%= f.select :mes, 
+                  options_for_select(I18n.t('date.month_names').compact.map.with_index(1) { |month, index| [month.capitalize, index] }, params[:mes]), 
+                  { include_blank: 'Todos' }, 
+                  { class: "form-select" } %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :año, 'Año', class: "form-label" %>
+      <%= f.select :año, 
+                  options_for_select((Date.current.year..Date.current.year + 5).to_a, params[:año]), 
+                  { include_blank: 'Todos' }, 
+                  { class: "form-select" } %>
+    </div>
+  </div>
+  <%= f.submit 'Filtrar', class: "btn btn-primary mt-3" %>
+<% end %>
+
+<br/><br/>
+
 <% if @periodos.any? %>
   <table class="table table-bordered">
     <thead class="table-dark">

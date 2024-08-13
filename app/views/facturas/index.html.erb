@@ -7,6 +7,48 @@
 <%= link_to 'Incluir facturas eliminadas', facturas_path(unscoped: "true"), class: "btn btn-outline-secondary mb-4" if params[:unscoped].blank? %>
 <%= link_to 'Excluir facturas eliminadas', facturas_path(unscoped: "false"), class: "btn btn-outline-secondary mb-4" if (params[:unscoped].present? && params[:unscoped] == "true") %>
 
+<%= form_with(url: facturas_path, method: :get, local: true) do |f| %>
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <%= f.label :keyword, 'Palabra clave', class: "form-label" %>
+      <%= f.text_field :keyword, value: params[:keyword], class: "form-control", placeholder: "Buscar por número de factura, medidor, DUI, cliente" %>
+    </div>
+    <div class="col-md-2">
+      <%= f.label :sector, 'Sector', class: "form-label" %>
+      <%= f.select :sector, 
+                  options_for_select(Medidor.sector_options, params[:sector]), 
+                  { include_blank: 'Todos' }, 
+                  { class: "form-select" } %>
+    </div>
+    <div class="col-md-2">
+      <%= label_tag :cancelado, "Cancelado", class: "form-label" %>
+      <%= select_tag :cancelado, options_for_select([["Todos", ""], ["SI", true], ["NO", false]], params[:cancelado]), class: "form-select" %>
+    </div>
+    <div class="col-md-2">
+      <%= f.label :mes, 'Mes', class: "form-label" %>
+      <%= f.select :mes, 
+                  options_for_select(I18n.t('date.month_names').compact.map.with_index(1) { |month, index| [month.capitalize, index] }, params[:mes]), 
+                  { include_blank: 'Todos' }, 
+                  { class: "form-select" } %>
+    </div>
+
+    <div class="col-md-2">
+      <%= f.label :año, 'Año', class: "form-label" %>
+      <%= f.select :año, 
+                  options_for_select((Date.current.year..Date.current.year + 5).to_a, params[:año]), 
+                  { include_blank: 'Todos' }, 
+                  { class: "form-select" } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.submit 'Filtrar', class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<br/><br/>
+
 <% if @facturas.any? %>
   <%= form_with url: print_facturas_path(unscoped: params[:unscoped]), method: :post do %>
     <table class="table table-bordered table-hover table-sm">
@@ -28,6 +70,7 @@
           <th scope="col">Fecha de Vencimiento</th>
           <th scope="col">Recargo Después de Vencimiento</th>
           <th scope="col">Cargo Total Después de Vencimiento</th>
+          <th scope="col">Cancelado</th>
           <th scope="col">Fecha de Pago</th>
           <th scope="col">Monto Total Pagado</th>
           <th scope="col">Observaciones</th>
@@ -54,6 +97,7 @@
             <td><%= factura.fecha_vencimiento_with_format %></td>
             <td><%= factura.recargo_despues_vencimiento %></td>
             <td><%= factura.cargo_total_despues_vencimiento %></td>
+            <td><%= factura.cancelado ? content_tag(:span, 'SI', class: 'text-success fw-bold') : content_tag(:span, 'NO', class: 'text-danger fw-bold') %></td>
             <td><%= factura.fecha_pago_with_format %></td>
             <td><%= factura.monto_total_pagado %></td>
             <td><%= factura.observaciones %></td>
