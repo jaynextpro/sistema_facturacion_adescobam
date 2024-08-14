@@ -22,7 +22,7 @@ class Medidor < ApplicationRecord
 
 
   def titulo 
-    "#{medidor} - #{activo_string}"
+    "#{medidor} - #{activo_string} - #{sector}"
   end
 
   def activo_string

@@ -7,7 +7,7 @@
 <%= form_with url: medidores_path, method: :get, local: true, class: "mb-4" do |f| %>
   <div class="row">
     <div class="col-md-5">
-      <%= f.label :keyword, 'Buscar', class: "form-label" %>
+      <%= f.label :keyword, 'Palabra clave', class: "form-label" %>
       <%= f.text_field :keyword, class: "form-control", placeholder: "Buscar por cliente, número de medidor o dirección", value: params[:keyword] %>
     </div>
     <div class="col-md-4">
@@ -19,7 +19,7 @@
       <%= f.select :activo, options_for_select([['Activo', true], ['Inactivo', false]], params[:activo]), { include_blank: 'Todos' }, { class: "form-select" } %>
     </div>
   </div>
-  <%= f.submit 'Buscar', class: "btn btn-primary mt-3" %>
+  <%= f.submit 'Filtrar', class: "btn btn-primary mt-3" %>
 <% end %>
 
 <br/><br/>

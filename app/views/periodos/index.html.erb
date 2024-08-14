@@ -16,7 +16,7 @@
     <div class="col-md-6">
       <%= f.label :año, 'Año', class: "form-label" %>
       <%= f.select :año, 
-                  options_for_select((Date.current.year..Date.current.year + 5).to_a, params[:año]), 
+                  options_for_select(((Date.new(2024).year)..(Date.new(2024).year + 10)).to_a, params[:año]), 
                   { include_blank: 'Todos' }, 
                   { class: "form-select" } %>
     </div>

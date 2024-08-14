@@ -19,7 +19,7 @@
 
       <div class="mb-3">
         <%= form.label :año, class: "form-label" %>
-        <%= form.select :año, (Date.current.year..Date.current.year + 5).to_a, { include_blank: true }, { class: "form-select" } %>
+        <%= form.select :año, ((Date.new(2024).year)..(Date.new(2024).year + 10)).to_a, { include_blank: true }, { class: "form-select" } %>
       </div>
 
       <div class="mb-3">
