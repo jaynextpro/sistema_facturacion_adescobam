@@ -139,7 +139,7 @@
                                     <span style="font-size: 16px; line-height: 115%; color: black;">
                                         <% Medidor.sector_options.each_with_index do |sector, index| %>
                                             <%= check_box_tag "sector#{index + 1}", sector, factura.medidor.try(:sector) == sector, id: "sector#{index + 1}" %>
-                                            <%= label_tag "sector#{index + 1}", sector, style: "margin-right: 40px;" %>
+                                            <%= label_tag "sector#{index + 1}", sector, style: "margin-right: 30px;" %>
                                         <% end %>
                                     </span>
                                 </p>
@@ -391,7 +391,7 @@
                                     <span style="font-size: 16px; line-height: 115%; color: black;">
                                         <% Medidor.sector_options.each_with_index do |sector, index| %>
                                             <%= check_box_tag "sector#{index + 1}", sector, factura.medidor.try(:sector) == sector, id: "sector#{index + 1}" %>
-                                            <%= label_tag "sector#{index + 1}", sector, style: "margin-right: 40px;" %>
+                                            <%= label_tag "sector#{index + 1}", sector, style: "margin-right: 30px;" %>
                                         <% end %>
                                     </span>
                                 </p>
