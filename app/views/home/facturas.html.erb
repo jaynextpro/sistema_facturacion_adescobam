@@ -9,7 +9,7 @@
     <body>
         <% @facturas.each_with_index do |factura, index| %>
             <div align="center" style='margin: 0 auto;font-size:11.0pt;font-family:"Calibri",sans-serif;max-width: 1100px;word-wrap: break-word;'>
-                <table style="float: left;width: 5.6e+2pt;border: none;border-collapse:collapse;margin-left:4.8pt;margin-right:4.8pt;margin-bottom:19.5pt;">
+                <table style="float: left;width: 5.6e+2pt;border: none;border-collapse:collapse;margin-left:4.8pt;margin-right:4.8pt;margin-bottom:25.5pt;margin-top:20.5pt">
                     <tbody>
                         <tr>
                             <td colspan="2" style="width: 100%; border-top: 1.5pt double rgb(68, 114, 196); border-bottom: 1.5pt double rgb(68, 114, 196); border-left: 1.5pt double rgb(68, 114, 196); padding: 3.5pt 3.5pt; height: 15.75pt; vertical-align: middle; text-align: center;">
@@ -139,7 +139,7 @@
                                     <span style="font-size: 16px; line-height: 115%; color: black;">
                                         <% Medidor.sector_options.each_with_index do |sector, index| %>
                                             <%= check_box_tag "sector#{index + 1}", sector, factura.medidor.try(:sector) == sector, id: "sector#{index + 1}" %>
-                                            <%= label_tag "sector#{index + 1}", sector, style: "margin-right: 40px;" %>
+                                            <%= label_tag "sector#{index + 1}", sector, style: "margin-right: 30px;" %>
                                         <% end %>
                                     </span>
                                 </p>
@@ -260,10 +260,260 @@
                 </table>
             </div>
 
-            <% if (index % 2) != 0 %>
-                <div style="page-break-after: always;"></div>
-                <div style="border: none;">&nbsp;</div>
-            <% end %>
+            <div align="center" style='margin: 0 auto;font-size:11.0pt;font-family:"Calibri",sans-serif;max-width: 1100px;word-wrap: break-word;'>
+                <table style="float: left;width: 5.6e+2pt;border: none;border-collapse:collapse;margin-left:4.8pt;margin-right:4.8pt">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" style="width: 100%; border-top: 1.5pt double rgb(68, 114, 196); border-bottom: 1.5pt double rgb(68, 114, 196); border-left: 1.5pt double rgb(68, 114, 196); padding: 3.5pt 3.5pt; height: 15.75pt; vertical-align: middle; text-align: center;">
+                                <div style="display: block; justify-content: center; align-items: center;">
+                                    <div style="text-align: left;">
+                                        <img width="92" src="<%= asset_url "1.png" %>" alt="image" height="84">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="4" style="width: 100%; border-top: 1.5pt double rgb(68, 114, 196); border-bottom: 1.5pt double rgb(68, 114, 196); padding: 3.5pt 3.5pt; height: 15.75pt; vertical-align: middle; text-align: center;">
+                                <div style="display: block; justify-content: center; align-items: center;">
+                                    <div style="text-align: center;">
+                                        <p style="margin: 0in; font-size: 16px; font-family: 'Comic Sans MS'; color: #0070C0; font-weight: bold; text-align: center;">
+                                            <span style="font-weight: bold; font-style: italic; font-size: 19px; font-family: 'Arial Black', sans-serif; font-weight: bold;">ASOCIACIÓN DE DESARROLLO COMUNAL "BELLO AMANECER" ADESCOBAM</span>
+                                        </p>
+                                        <p style="margin: 0in; font-size: 16px; font-family: 'Comic Sans MS'; color: #0070C0; font-weight: bold; text-align: center;">
+                                            <span style="font-weight: bold; font-family: 'Calibri Light', sans-serif;">CANTÓN VALLE NUEVO SAN CARLOS – MORAZÁN</span>
+                                        </p>
+                                        <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 0in; margin-left: 0in; font-size: 11.0pt; font-family: 'Calibri', sans-serif; line-height: normal;">
+                                            <strong><span style="font-size: 5px; color: #0070C0;"></span></strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2" style="width: 100%; border-top: 1.5pt double rgb(68, 114, 196); border-right: 1.5pt double rgb(68, 114, 196); border-bottom: 1.5pt double rgb(68, 114, 196); padding: 3.5pt 3.5pt; height: 15.75pt; vertical-align: middle; text-align: center;">
+                                <div style="display: block; justify-content: center; align-items: center;">
+                                    <div style="text-align: right;">
+                                        <img width="92" src="<%= asset_url "2.png" %>" alt="image" height="84">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="8" style="width: 100%;border-right: 1.5pt double rgb(68, 114, 196);border-bottom: 1.5pt double rgb(68, 114, 196);border-left: 1.5pt double rgb(68, 114, 196);border-image: initial;border-top: none;padding: 3.5pt 3.5pt;height: 15.75pt;vertical-align: middle;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><strong><span style="font-size:5px;color:#0070C0;"></span></strong></p>
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style='font-size:19px;font-family:  "Arial",sans-serif;color:black;'></span></strong><strong><span style='font-size:19px;font-family:  "Tahoma",sans-serif;color:#0070C0;'>PROYECTO DE AGUA POTABLE</span></strong></p>
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:17.05pt;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><u><span style='font-size:19px;font-family:  "Tahoma",sans-serif;color:#0070C0;'>FACTURA DE COBRO.</span></u></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 4.02%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 11.48%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 11.42%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 13.94%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 16.2%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 27.86%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: top;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-size:13px;font-family:"Times New Roman",serif;'></span></p>
+                            </td>
+                            <td colspan="2" style="width: 15.08%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 26.92%;border-top: none;border-left: 1.5pt double rgb(68, 114, 196);border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 30.1pt;vertical-align: middle;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:115%;'><strong><span style="font-size:16px;line-height:115%;color:black;">FACTURA DE</span></strong></p>
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:115%;'><strong><span style="font-size:16px;line-height:115%;color:black;">COBRO No.</span></strong><span style="font-size:16px;line-height:115%;font-weight: bold;color:red;border-bottom: 1px solid black;display: inline-block;width: 170px;line-height: 60%;padding:5px;"><%= factura.numero_factura %></span></p>
+                            </td>
+                            <td colspan="2" style="width: 30.14%;border-top: none;border-left: none;border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 30.1pt;vertical-align: middle;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:115%;'><strong><span style="font-size:16px;line-height:115%;color:black;">MES FACTURADO: </span></strong><span style="font-size:16px;line-height:  115%;color:black;border-bottom: 1px solid black;display: inline-block;width: 260px;line-height: 60%;padding:5px;"><%= factura.periodo.try(:mes_texto) %></span></p>
+                            </td>
+                            <td colspan="3" style="width: 42.6%;border-top: none;border-left: none;border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 1.5pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 30.1pt;vertical-align: middle;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:115%;'><strong><span style="font-size:16px;line-height:115%;color:black;">AÑO:</span></strong></p>
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:115%;'><span style="font-size:16px;line-height:115%;color:black;border-bottom: 1px solid black;display: inline-block;width: 260px;line-height: 60%;padding:5px;"><%= factura.periodo.try(:año) %></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="width: 57.06%;border-top: none;border-left: 1.5pt double rgb(68, 114, 196);border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 21.15pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:115%;'><strong><span style="font-size:16px;line-height:115%;color:black;">USUARIO/SOCIO</span></strong></p>
+                            </td>
+                            <td style="width:27.86%;border-top:none;border-left:none;border-bottom:solid #305496 2.25pt;border-right:solid #305496 2.25pt;padding:0in 3.5pt 0in 3.5pt;height:21.15pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:115%;'><strong><span style="font-size:16px;line-height:115%;color:black;">No. De DUI</span></strong></p>
+                            </td>
+                            <td colspan="2" style="width:15.08%;border-top:none;border-left:  none;border-bottom:solid #305496 2.25pt;border-right:double #4472C4 1.5pt;padding:0in 3.5pt 0in 3.5pt;height:21.15pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:115%;'><strong><span style="font-size:16px;line-height:115%;color:black;">MEDIDOR No.</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="width: 57.06%;border-top: none;border-left: 1.5pt double rgb(68, 114, 196);border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 23.55pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:16px;color:black;border-bottom: 1px solid black;display: inline-block;width: 575px;line-height: 85%;"><%= factura.cliente.try(:nombre_completo) %></span></p>
+                            </td>
+                            <td style="width: 27.86%;border-top: none;border-left: none;border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 23.55pt;vertical-align: bottom;">
+                                <table style="float: left;width: 1.5e+2pt;border-collapse:collapse;border:none;margin-left:4.8pt;margin-right:4.8pt;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:14.9pt;border:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style="font-size:13px;"><%= factura.cliente.try(:dui).try(:slice, 0) %></span></p>
+                                            </td>
+                                            <td style="width:14.9pt;border:solid windowtext 1.0pt;border-left:    none;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style="font-size:13px;"><%= factura.cliente.try(:dui).try(:slice, 1) %></span></p>
+                                            </td>
+                                            <td style="width:14.9pt;border:solid windowtext 1.0pt;border-left:    none;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style="font-size:13px;"><%= factura.cliente.try(:dui).try(:slice, 2) %></span></p>
+                                            </td>
+                                            <td style="width:14.9pt;border:solid windowtext 1.0pt;border-left:    none;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style="font-size:13px;"><%= factura.cliente.try(:dui).try(:slice, 3) %></span></p>
+                                            </td>
+                                            <td style="width:14.9pt;border:solid windowtext 1.0pt;border-left:    none;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style="font-size:13px;"><%= factura.cliente.try(:dui).try(:slice, 4) %></span></p>
+                                            </td>
+                                            <td style="width:14.9pt;border:solid windowtext 1.0pt;border-left:    none;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style="font-size:13px;"><%= factura.cliente.try(:dui).try(:slice, 5) %></span></p>
+                                            </td>
+                                            <td style="width:14.9pt;border:solid windowtext 1.0pt;border-left:    none;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style="font-size:13px;"><%= factura.cliente.try(:dui).try(:slice, 6) %></span></p>
+                                            </td>
+                                            <td style="width:14.9pt;border:solid windowtext 1.0pt;border-left:    none;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style="font-size:13px;"><%= factura.cliente.try(:dui).try(:slice, 7) %></span></p>
+                                            </td>
+                                            <td style="width:13.2pt;border:solid windowtext 1.0pt;border-left:    none;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><strong><span style='font-size:13px;font-family:"Eras Bold ITC",sans-serif;'><%= factura.cliente.try(:dui).try(:slice, 8) %></span></strong></p>
+                                            </td>
+                                            <td style="width:14.9pt;border:solid windowtext 1.0pt;border-left:    none;padding:0in 5.4pt 0in 5.4pt;height:22.3pt;">
+                                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style="font-size:13px;"><%= factura.cliente.try(:dui).try(:slice, 9) %></span></p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'></p>
+                            </td>
+                            <td colspan="2" style="width: 15.08%;border-top: none;border-left: none;border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 23.55pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:16px;color:black;font-weight: bold;border-bottom: 1px solid black;display: inline-block;width: 160px;line-height: 85%;"><%= factura.medidor.try(:medidor) %></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8" style="width: 100%; border-top: none; border-left: 1.5pt double rgb(68, 114, 196); border-bottom: 2.25pt solid rgb(48, 84, 150); border-right: 1.5pt double rgb(68, 114, 196); padding: 3.5pt 3.5pt; height: 1pt; vertical-align: top;">
+                                <p style='margin-top: 0in; margin-right: 0in; margin-bottom: 0in; margin-left: 0in; font-size: 11.0pt; font-family: "Calibri", sans-serif;text-align:center; line-height: 115%;'>
+                                    <strong><span style="font-size: 16px; line-height: 115%; color: black;">SECTOR:</span></strong>
+                                    <span style="font-size: 16px; line-height: 115%; color: black;">
+                                        <% Medidor.sector_options.each_with_index do |sector, index| %>
+                                            <%= check_box_tag "sector#{index + 1}", sector, factura.medidor.try(:sector) == sector, id: "sector#{index + 1}" %>
+                                            <%= label_tag "sector#{index + 1}", sector, style: "margin-right: 30px;" %>
+                                        <% end %>
+                                    </span>
+                                </p>
+                            </td>                
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="width:15.5%;border-top:none;border-left:  double #4472C4 1.5pt;border-bottom:solid #305496 2.25pt;border-right:solid #305496 2.25pt;padding:0in 3.5pt 0in 3.5pt;height:45.75pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:16px;color:black;">LECTURA ANTERIOR Mᶟ</span></p>
+                            </td>
+                            <td style="width:11.42%;border-top:none;border-left:none;border-bottom:solid #305496 2.25pt;border-right:solid #305496 2.25pt;padding:0in 3.5pt 0in 3.5pt;height:45.75pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:16px;color:black;">LECTURA ACTUAL Mᶟ</span></p>
+                            </td>
+                            <td style="width:13.94%;border-top:none;border-left:none;border-bottom:solid #305496 2.25pt;border-right:solid #305496 2.25pt;padding:0in 3.5pt 0in 3.5pt;height:45.75pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:16px;color:black;">CONSUMO Mᶟ</span></p>
+                            </td>
+                            <td style="width:16.2%;border-top:none;border-left:none;border-bottom:solid #305496 2.25pt;border-right:solid #305496 2.25pt;background-color:#FBE4D5;padding:0in 3.5pt 0in 3.5pt;height:45.75pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:16px;color:black;">TOTAL A CANCELAR</span></strong></p>
+                            </td>
+                            <td style="width:27.86%;border-top:none;border-left:none;border-bottom:solid #305496 2.25pt;border-right:solid #305496 2.25pt;padding:3.5pt 3.5pt 0in 3.5pt;height:45.75pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:16px;color:black;">RECARGO DESPUÉS DE VENCIDO (0.05%)</span></p>
+                            </td>
+                            <td colspan="2" style="width:15.08%;border-top:none;border-left:  none;border-bottom:solid #305496 2.25pt;border-right:double #4472C4 1.5pt;padding:0in 3.5pt 0in 3.5pt;height:45.75pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="font-size:16px;color:black;">DESPUÉS DE VENCIDO CANCELARÁ</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="width: 15.5%;border-top: none;border-left: 1.5pt double rgb(68, 114, 196);border-bottom: 1.5pt double rgb(68, 114, 196);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 20.25pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 160px;line-height: 85%;"><%= factura.lectura_anterior_metros_cubicos %></span></p>
+                            </td>
+                            <td style="width: 11.42%;border-top: none;border-left: none;border-bottom: 1.5pt double rgb(68, 114, 196);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 20.25pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 130px;line-height: 85%;"><%= factura.lectura_actual_metros_cubicos %></span></p>
+                            </td>
+                            <td style="width: 13.94%;border-top: none;border-left: none;border-bottom: 1.5pt double rgb(68, 114, 196);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 20.25pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 140px;line-height: 85%;"><%= factura.consumo_metros_cubicos %></span></p>
+                            </td>
+                            <td style="width: 16.2%;border-top: none;border-left: none;border-bottom: 1.5pt double rgb(68, 114, 196);border-right: 2.25pt solid rgb(48, 84, 150);background-color: rgb(251, 228, 213);padding: 3.5pt 3.5pt;height: 20.25pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:16px;color:black;">$</span></strong><span style="color:black;font-weight: bold;border-bottom: 1px solid black;display: inline-block;width: 90px;line-height: 85%;"><%= factura.cargo_total %></span></p>
+                            </td>
+                            <td style="width: 27.86%;border-top: none;border-left: none;border-bottom: 1.5pt double rgb(68, 114, 196);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 20.25pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>$<span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 170px;line-height: 85%;"><%= factura.recargo_despues_vencimiento %></span></p>
+                            </td>
+                            <td colspan="2" style="width: 15.08%;border-top: none;border-left: none;border-bottom: 1.5pt double rgb(68, 114, 196);border-right: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 20.25pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>$<span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 120px;line-height: 85%;"><%= factura.cargo_total_despues_vencimiento %></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 4.02%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 11.48%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 11.42%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 13.94%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 16.2%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                            <td style="width: 27.86%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: top;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;line-height:normal;'><span style='font-size:13px;font-family:"Times New Roman",serif;'></span></p>
+                            </td>
+                            <td colspan="2" style="width: 15.08%;border-top: none;border-right: none;border-left: none;border-image: initial;border-bottom: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 9.75pt;vertical-align: bottom;"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="width: 15.5%;border-top: none;border-left: 1.5pt double rgb(68, 114, 196);border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 30pt;vertical-align: top;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:16px;color:black;">FACTURAS PENDIENTES</span></strong></p>
+                            </td>
+                            <td colspan="3" style="width:41.56%;border-top:none;border-left:  none;border-bottom:solid #305496 2.25pt;border-right:solid #305496 2.25pt;padding:0in 3.5pt 0in 3.5pt;height:30.0pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:16px;color:black;">FECHA </span></strong></p>
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:16px;color:black;">DE EMISIÓN</span></strong><span style="font-size:16px;color:black;"></span></p>
+                            </td>
+                            <td colspan="3" style="width:42.94%;border-top:none;border-left:  none;border-bottom:solid #305496 2.25pt;border-right:double #4472C4 1.5pt;padding:0in 3.5pt 0in 3.5pt;height:30.0pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:16px;color:black;">FECHA</span></strong></p>
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:16px;color:black;">DE VENCIMIENTO</span></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="width: 15.5%;border-top: none;border-left: 1.5pt double rgb(68, 114, 196);border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 24.95pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'>$<span style="color:red;border-bottom: 1px solid black;display: inline-block;width: 115px;line-height: 85%;"><%= factura.cargo_total_facturas_pendientes %></span></p>
+                            </td>
+                            <td colspan="3" style="width: 41.56%;border-top: none;border-left: none;border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 2.25pt solid rgb(48, 84, 150);padding: 3.5pt 3.5pt;height: 24.95pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="color:black;">DIA:</span></strong><span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 35px;line-height: 85%;"><%= factura.fecha_emision.try(:day) %></span> <strong>MES:</strong> <span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 95px;line-height: 85%;"><%= factura.emision_mes_texto %></span> <strong>AÑO:</strong> <span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 55px;line-height: 85%;"><%= factura.fecha_emision.try(:year) %></span></p>
+                            </td>
+                            <td colspan="3" style="width: 42.94%;border-top: none;border-left: none;border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 24.95pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="color:black;">DIA:</span></strong><span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 35px;line-height: 85%;"><%= factura.fecha_vencimiento.try(:day) %></span> <strong>MES:</strong> <span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 95px;line-height: 85%;"><%= factura.vencimiento_mes_texto %></span> <strong>AÑO:</strong> <span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 55px;line-height: 85%;"><%= factura.fecha_vencimiento.try(:year) %></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8" style="width: 100%;border-top: none;border-left: 1.5pt double rgb(68, 114, 196);border-bottom: 2.25pt solid rgb(48, 84, 150);border-right: 1.5pt double rgb(68, 114, 196);padding: 3.5pt 3.5pt;height: 24.95pt;vertical-align: bottom;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="color:black;">Cuota Social pendiente:</span></strong> $<span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 700px;line-height: 85%;"><%= factura.cuota_social_pendiente %></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8" style="width:100.0%;border-top:none;border-left:  double #4472C4 1.5pt;border-bottom:solid #305496 2.25pt;border-right:double #4472C4 1.5pt;background-color:#E2F9FE;padding:0in 3.5pt 0in 3.5pt;height:24.95pt;">
+                                <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:0in;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;line-height:normal;'><strong><span style="font-size:16px;color:black;">CONVOCATORIA A ASAMBLEA GENERAL:</span></strong><span style="font-size:16px;color:black;"> <%= factura.periodo.try(:dia_texto_asamblea).try(:capitalize) %> <span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 45px;line-height: 85%;"><%= factura.periodo.try(:fecha_asamblea).try(:day) %></span> de <span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 95px;line-height: 85%;"><%= factura.periodo.try(:mes_texto_asamblea) %></span> de <span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 55px;line-height: 85%;"><%= factura.periodo.try(:fecha_asamblea).try(:year) %></span>. Hora: <span style="color:black;border-bottom: 1px solid black;display: inline-block;width: 85px;line-height: 85%;"><%= factura.periodo.try(:fecha_asamblea).try(:strftime, "%I:%M %p") %></span>.</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="width: 57.06%; border-top: none; border-left: double #4472C4 1.5pt; border-bottom: double #4472C4 1.5pt; border-right: solid #305496 2.25pt; padding: 3.5pt 3.5pt; height: 27.15pt; text-align: center;">
+                                <p style='margin-top: 0in; margin-right: 0in; margin-bottom: 0in; margin-left: 0in; font-size: 11.0pt; font-family: "Calibri", sans-serif; line-height: normal;'><em><span style="font-size: 16px; color: black;">Esta factura será válida con la firma y sello de cancelado.</span></em><em><span style="color: black;"></span></em></p>
+                            </td>
+                            <td colspan="1" style="width: 11.57%; border-top: none; border-right: none; border-bottom: double #4472C4 1.5pt; border-left: double #4472C4 1.5pt; padding: 3.5pt 3.5pt; height: 27.15pt; text-align: center;">
+                                <div style="display: flex; justify-content: center; align-items: center;">
+                                    <div style=" text-align: left;">
+                                        <img width="18" src="<%= asset_url "3.jpg" %>" alt="Gota del agua ilustración del vector. Ilustración de agua - 9524487" height="23">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2" style="width: 42.94%; border-top: none; border-left: none; border-bottom: double #4472C4 1.5pt; border-right: none; padding: 3.5pt 3.5pt; height: 27.15pt; text-align: center;">
+                                <div style="display: flex; justify-content: center; align-items: center;">
+                                    <div style="flex: 1; text-align: center;">
+                                        <strong><span style='font-size: 16px; font-family: "Arial Black", sans-serif; color: #4472C4;'>AHORREMOS EL AGUA</span></strong>
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="1" style="width: 11.57%; border-top: none; border-left: none; border-bottom: double #4472C4 1.5pt; border-right: double #4472C4 1.5pt; padding: 3.5pt 3.5pt; height: 27.15pt; text-align: center;">
+                                <div style="display: flex; justify-content: center; align-items: center;">
+                                    <div style=" text-align: right;">
+                                        <img width="18" src="<%= asset_url "3.jpg" %>" alt="Gota del agua ilustración del vector. Ilustración de agua - 9524487" height="23">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>            
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="page-break-after: always;"></div>
+            <div style="border: none;">&nbsp;</div>
         <% end %>
     </body>
 </html>

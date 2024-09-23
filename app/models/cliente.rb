@@ -10,6 +10,13 @@ class Cliente < ApplicationRecord
                   uniqueness: {case_sensitive: false }
   validates :nombre_completo, presence: true
 
+  scope :by_keyword, ->(keyword) {
+    return all if keyword.blank?
+
+    normalized_keyword = keyword&.strip&.gsub('-', '')
+    where('REPLACE(dui, \'-\', \'\') ILIKE :keyword OR nombre_completo ILIKE :keyword', keyword: "%#{normalized_keyword}%")
+  }
+
   def titulo
     "#{dui} - #{nombre_completo}"
   end

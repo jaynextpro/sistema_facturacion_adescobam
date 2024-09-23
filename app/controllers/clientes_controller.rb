@@ -1,7 +1,9 @@
 class ClientesController < ApplicationController
     # Acción para listar todos los clientes
     def index
-      @clientes = Cliente.all.paginate(page: params[:page], per_page: 10)
+      @clientes = Cliente.all
+      @clientes = @clientes.by_keyword(params[:keyword]).paginate(page: params[:page], per_page: 10)
+      @clientes = @clientes.paginate(page: params[:page], per_page: 10)
 
       respond_to do |format|
         format.html

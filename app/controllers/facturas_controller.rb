@@ -2,6 +2,11 @@ class FacturasController < ApplicationController
     # Acción para listar todas las facturas
     def index
       @facturas = (params[:unscoped].present? && params[:unscoped] == "true") ? Factura.unscoped.all.order(created_at: :desc) : Factura.all
+      @facturas = @facturas.by_cancelado(params[:cancelado])
+      @facturas = @facturas.by_mes(params[:mes])
+      @facturas = @facturas.by_año(params[:año])
+      @facturas = @facturas.by_sector(params[:sector])
+      @facturas = @facturas.by_keyword(params[:keyword])
       @facturas = @facturas.paginate(page: params[:page], per_page: 10)
 
       respond_to do |format|
@@ -89,7 +94,7 @@ class FacturasController < ApplicationController
       params.require(:factura).permit(
         :medidor_id, :periodo_id, :cliente_id, :numero_factura, :fecha_emision,
         :lectura_anterior_metros_cubicos, :lectura_actual_metros_cubicos, :consumo_metros_cubicos,
-        :valor_por_metro_cubico, :cargo_total, :fecha_pago, :monto_total_pagado, :cargo_total_facturas_pendientes,
+        :valor_por_metro_cubico, :cargo_total, :cancelado, :fecha_pago, :monto_total_pagado, :cargo_total_facturas_pendientes,
         :cuota_social_pendiente, :fecha_vencimiento, :recargo_despues_vencimiento,
         :cargo_total_despues_vencimiento, :observaciones
       )

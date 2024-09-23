@@ -14,6 +14,9 @@ class Periodo < ApplicationRecord
 
   validates :fecha_asamblea, presence: true
 
+  scope :by_mes, ->(mes) { where('mes = ?', mes) unless mes.blank? }
+  scope :by_año, ->(año) { where('año = ?', año) unless año.blank? }
+
   def titulo 
     "#{mes_texto} - #{año}"
   end

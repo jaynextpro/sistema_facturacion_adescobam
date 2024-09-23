@@ -27,6 +27,21 @@ class Factura < ApplicationRecord
 
   default_scope { where(eliminada: false) }
 
+  scope :by_cancelado, ->(cancelado) { where(cancelado: cancelado) unless cancelado.blank? }
+  scope :by_mes, ->(mes) { joins(:periodo).where('periodos.mes = ?', mes) unless mes.blank? }
+  scope :by_año, ->(año) { joins(:periodo).where('periodos.año = ?', año) unless año.blank? }
+  scope :by_sector, ->(sector) {
+    return all if sector.blank?
+    joins(:medidor).where(medidores: { sector: sector })
+  }
+  scope :by_keyword, ->(keyword) {
+  joins(:medidor, :cliente)
+    .where(
+      'REPLACE(clientes.dui, \'-\', \'\') ILIKE :keyword OR numero_factura ILIKE :keyword OR medidores.medidor ILIKE :keyword OR clientes.nombre_completo ILIKE :keyword',
+      keyword: "%#{keyword&.strip&.gsub('-', '')}%"
+    )
+  }
+
   # Add methods for formatted date and datetime attributes
   def fecha_emision_with_format
     fecha_emision.strftime("%d/%m/%Y") if fecha_emision.present?
@@ -54,7 +69,7 @@ class Factura < ApplicationRecord
       "Lectura Anterior Metros Cubicos", "Lectura Actual Metros Cubicos", "Consumo Metros Cubicos", 
       "Valor Por Metro Cubico", "Cargo Total", "Cargo Total Facturas Pendientes", 
       "Cuota Social Pendiente", "Fecha Vencimiento", "Recargo Despues De Vencimiento", 
-      "Cargo Total Despues De Vencimiento", "Fecha Pago", "Monto Total Pagado", 
+      "Cargo Total Despues De Vencimiento", "Cancelado", "Fecha Pago", "Monto Total Pagado", 
       "Observaciones", "Creado", "Actualizado"
     ]
 
@@ -63,7 +78,7 @@ class Factura < ApplicationRecord
       lectura_anterior_metros_cubicos lectura_actual_metros_cubicos consumo_metros_cubicos
       valor_por_metro_cubico cargo_total cargo_total_facturas_pendientes
       cuota_social_pendiente fecha_vencimiento_with_format recargo_despues_vencimiento
-      cargo_total_despues_vencimiento fecha_pago_with_format monto_total_pagado
+      cargo_total_despues_vencimiento estado_string fecha_pago_with_format monto_total_pagado
       observaciones created_at_with_format updated_at_with_format
     }
 
@@ -82,6 +97,10 @@ class Factura < ApplicationRecord
 
   def vencimiento_mes_texto
     mes_to_text(fecha_vencimiento.try(:month))
+  end
+
+  def estado_string
+    cancelado ? 'SI' : 'NO'
   end
 
   def destroy 

@@ -4,6 +4,26 @@
 
 <br/><br/>
 
+<%= form_with url: medidores_path, method: :get, local: true, class: "mb-4" do |f| %>
+  <div class="row">
+    <div class="col-md-5">
+      <%= f.label :keyword, 'Palabra clave', class: "form-label" %>
+      <%= f.text_field :keyword, class: "form-control", placeholder: "Buscar por cliente, número de medidor o dirección", value: params[:keyword] %>
+    </div>
+    <div class="col-md-4">
+      <%= f.label :sector, 'Sector', class: "form-label" %>
+      <%= f.select :sector, options_for_select(Medidor.sector_options, params[:sector]), { include_blank: 'Todos' }, { class: "form-select" } %>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :activo, 'Estado', class: "form-label" %>
+      <%= f.select :activo, options_for_select([['Activo', true], ['Inactivo', false]], params[:activo]), { include_blank: 'Todos' }, { class: "form-select" } %>
+    </div>
+  </div>
+  <%= f.submit 'Filtrar', class: "btn btn-primary mt-3" %>
+<% end %>
+
+<br/><br/>
+
 <% if @medidores.any? %>
   <table class="table table-bordered">
     <thead class="table-dark">
@@ -22,7 +42,7 @@
           <td><%= medidor.cliente.nombre_completo if medidor.cliente %></td>
           <td><%= medidor.medidor %></td>
           <td><%= medidor.sector %></td>
-          <td><%= medidor.activo ? 'ACTIVO' : 'INACTIVO' %></td>
+          <td><%= medidor.activo ? content_tag(:span, 'ACTIVO', class: 'text-success fw-bold') : content_tag(:span, 'INACTIVO', class: 'text-danger fw-bold') %></td>
           <td><%= medidor.direccion %></td>
           <td><%= link_to 'Editar', edit_medidor_path(medidor), class: "btn btn-sm btn-primary me-2" %></td>
           <td><%= link_to 'Eliminar', medidor, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-sm btn-danger" %></td>

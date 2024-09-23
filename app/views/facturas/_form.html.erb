@@ -1,14 +1,15 @@
 <%= form_with(model: factura, local: true) do |form| %>
   <div class="card shadow-sm mx-auto" style="max-width: 600px;">
     <% if factura.errors.any? %>
-        <div id="error_explanation" class="alert alert-danger">
-          <ul>
-            <% factura.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <div id="error_explanation" class="alert alert-danger">
+        <ul>
+          <% factura.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
     <div class="card-body">
       <h1 class="card-title text-center mb-4"><%= factura.persisted? ? 'Editar Factura' : 'Nueva Factura' %></h1>
 
@@ -66,11 +67,16 @@
 
       <% if factura.persisted? %>
         <div class="mb-3">
+          <%= form.label :cancelado, class: "form-check-label" %>
+          <%= form.check_box :cancelado, { class: "form-check-input" } %>
+        </div>
+
+        <div class="mb-3 fecha_pago_field" style="display: none;">
           <%= form.label :fecha_pago, class: "form-label" %>
           <%= form.text_field :fecha_pago, class: "form-control datepicker" %>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 monto_total_pagado_field" style="display: none;">
           <%= form.label :monto_total_pagado, class: "form-label" %>
           <%= form.number_field :monto_total_pagado, { step: :any, class: "form-control" } %>
         </div>
@@ -88,4 +94,24 @@
       <%= link_to 'Volver', facturas_path, class: "btn btn-outline-primary mb-4" %>
     </div>
   </div>
+
+  <script type="module">
+    $(document).ready(function() {
+      togglePagoFields();
+
+      $('#factura_cancelado').change(function() {
+        togglePagoFields();
+      });
+
+      function togglePagoFields() {
+        if ($('#factura_cancelado').is(':checked')) {
+          $('.fecha_pago_field').show();
+          $('.monto_total_pagado_field').show();
+        } else {
+          $('.fecha_pago_field').hide();
+          $('.monto_total_pagado_field').hide();
+        }
+      }
+    });
+  </script>
 <% end %>

@@ -1,7 +1,11 @@
 class MedidoresController < ApplicationController
     # Acción para listar todos los medidores
     def index
-      @medidores = Medidor.all.paginate(page: params[:page], per_page: 10)
+      @medidores = Medidor.all
+      @medidores = @medidores.by_keyword(params[:keyword])
+      @medidores = @medidores.by_sector(params[:sector])
+      @medidores = @medidores.by_activo(params[:activo])
+      @medidores = @medidores.paginate(page: params[:page], per_page: 10)
 
       respond_to do |format|
         format.html
